@@ -70,6 +70,72 @@ body {
     }
 }
 
+/* Motivational Toast - Hidden by default */
+.motivational-toast {
+    position: fixed;
+    bottom: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+    color: white;
+    padding: 25px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    gap: 20px;
+    transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-width: 500px;
+    border: 3px solid white;
+}
+
+.motivational-toast.show {
+    display: flex;
+    bottom: 30px;
+}
+
+.toast-emoji {
+    font-size: 3em;
+    animation: toastBounce 1s ease-in-out infinite;
+}
+
+@keyframes toastBounce {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(-10deg); }
+    75% { transform: scale(1.2) rotate(10deg); }
+}
+
+.toast-message {
+    font-size: 1.2em;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+}
+
+.toast-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast-close:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+}
+
 .container {
     max-width: min(900px, 100%);
     width: 100%;
@@ -104,15 +170,14 @@ header h1 {
 /* Avatar Face */
 .avatar-container {
     position: absolute;
-    right: clamp(5px, 2vw, 20px);
-    top: clamp(10px, 2vh, 20px);
-    transform: none;
-    z-index: 10;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .avatar-face {
-    width: clamp(50px, 10vw, 80px);
-    height: clamp(50px, 10vw, 80px);
+    width: 80px;
+    height: 80px;
     animation: avatarBounce 2s ease-in-out infinite;
 }
 
@@ -204,26 +269,20 @@ header h1 {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.3);
-    border: 2px solid white;
-    color: white;
-    font-size: clamp(1.2em, 3vw, 1.8em);
-    padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px)
-
 .menu-toggle {
     position: absolute;
-    left: clamp(5px, 2vw, 20px);
-    top: clamp(10px, 2vh, 20px);
-    transform: none;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.3);
     border: 2px solid white;
     color: white;
-    font-size: clamp(1.2em, 3vw, 1.8em);
-    padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px);
+    font-size: 1.8em;
+    padding: 10px 18px;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 10;
 }
 
 .menu-toggle:hover {
