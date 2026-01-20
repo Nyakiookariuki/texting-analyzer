@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#gradient1)"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b7ecf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b39ddb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0aaff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c77dff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Chat bubble (left) -->
+  <path d="M 60 70 Q 60 50 80 50 L 110 50 Q 130 50 130 70 L 130 90 Q 130 110 110 110 L 85 110 L 75 120 L 75 110 L 80 110 Q 60 110 60 90 Z" fill="white" opacity="0.95"/>
+  
+  <!-- Chat bubble (right) -->
+  <path d="M 140 95 Q 140 85 150 85 L 170 85 Q 180 85 180 95 L 180 110 Q 180 120 170 120 L 155 120 L 150 128 L 150 120 L 150 120 Q 140 120 140 110 Z" fill="url(#gradient2)"/>
+  
+  <!-- Emoji faces in bubbles -->
+  <g transform="translate(95, 75)">
+    <!-- Happy face -->
+    <circle cx="0" cy="0" r="3" fill="#9b7ecf"/>
+    <circle cx="10" cy="0" r="3" fill="#9b7ecf"/>
+    <path d="M -2 5 Q 5 10 12 5" stroke="#9b7ecf" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <g transform="translate(165, 100)">
+    <!-- Laughing face -->
+    <circle cx="0" cy="0" r="2" fill="white"/>
+    <circle cx="7" cy="0" r="2" fill="white"/>
+    <path d="M -1 4 Q 3.5 7 8 4" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Sparkles/stars -->
+  <circle cx="45" cy="45" r="4" fill="#ffd60a" opacity="0.8"/>
+  <circle cx="155" cy="55" r="3" fill="#ffd60a" opacity="0.8"/>
+  <circle cx="50" cy="150" r="3" fill="#06ffa5" opacity="0.8"/>
+  <circle cx="145" cy="145" r="4" fill="#ff6b9d" opacity="0.8"/>
+  
+  <!-- Text effect lines (indicating communication) -->
+  <line x1="25" y1="130" x2="35" y2="130" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <line x1="25" y1="140" x2="40" y2="140" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <line x1="25" y1="150" x2="32" y2="150" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+</svg>
