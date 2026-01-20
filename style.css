@@ -13,12 +13,10 @@ body {
     font-family: 'Segoe UI', 'Noto Sans', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(135deg, #e8d5f2 0%, #f5e6ff 100%);
     min-height: 100vh;
-    padding: clamp(5px, 2vw, 20px);
+    padding: 20px;
     color: #333;
     overflow-x: hidden;
     position: relative;
-    width: 100%;
-    max-width: 100vw;
 }
 
 /* Floating Emojis Background */
@@ -137,11 +135,10 @@ body {
 }
 
 .container {
-    max-width: min(900px, 100%);
-    width: 100%;
+    max-width: 900px;
     margin: 0 auto;
     background: #f7f7f7;
-    border-radius: clamp(10px, 2vw, 20px);
+    border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     position: relative;
@@ -151,20 +148,23 @@ body {
 header {
     background: linear-gradient(135deg, #9b7ecf 0%, #b39ddb 100%);
     color: white;
-    padding: clamp(40px, 8vw, 50px) clamp(15px, 4vw, 30px) clamp(30px, 6vw, 50px);
+    padding: 50px 30px;
     text-align: center;
     position: relative;
     box-shadow: 0 4px 15px rgba(155, 126, 207, 0.3);
 }
 
 header h1 {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    margin: 0;
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 }
 
 .subtitle {
-    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
-    margin-top: 10px;
+    font-size: 1.3em;
+    opacity: 0.95;
+    font-weight: 400;
 }
 
 /* Avatar Face */
