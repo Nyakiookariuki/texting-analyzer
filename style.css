@@ -1704,16 +1704,19 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        padding: 5px;
+        overflow-x: hidden;
     }
     
     .container {
         max-width: 100%;
         border-radius: 15px;
+        overflow-x: hidden;
     }
     
     header {
-        padding: 30px 15px;
+        padding: 60px 15px 30px 15px;
+        position: relative;
     }
     
     header h1 {
@@ -1724,15 +1727,18 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
         font-size: 0.9em;
     }
     
-    /* Avatar - smaller on mobile */
+    /* Avatar - smaller on mobile and properly positioned */
     .avatar-container {
-        right: 10px;
+        position: absolute;
+        right: 5px;
+        top: 20px;
+        transform: none;
     }
     
     .avatar-face,
     .avatar-head {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
     
     .avatar-eyes {
@@ -1761,11 +1767,14 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
         height: 15px;
     }
     
-    /* Menu toggle */
+    /* Menu toggle - properly positioned */
     .menu-toggle {
-        font-size: 1.5em;
-        padding: 8px 14px;
+        position: absolute;
+        font-size: 1.4em;
+        padding: 6px 12px;
         left: 10px;
+        top: 20px;
+        transform: none;
     }
     
     /* Side menu - full width when open */
@@ -1773,18 +1782,36 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
         width: 250px;
     }
     
-    /* Content area */
+    /* Content area - full width on mobile */
     .content-area {
-        padding: 15px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: 0;
     }
     
-    /* Modules */
+    .app-layout {
+        display: block;
+    }
+    
+    /* Modules - full width and proper overflow */
     .module {
         padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     
     .module h2 {
         font-size: 1.5em;
+    }
+    
+    /* All input fields full width */
+    textarea,
+    input[type="text"],
+    .chat-input {
+        width: 100%;
+        box-sizing: border-box;
     }
     
     /* Text areas */
@@ -1829,10 +1856,17 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
         padding: 6px 12px;
     }
     
-    /* Chat messages */
+    /* Chat messages - proper width and spacing */
     .chat-messages {
         height: 250px;
-        padding: 15px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .chat-container {
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .message {
@@ -1843,6 +1877,13 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
     
     .chat-input {
         font-size: 1em;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .chat-input-container {
+        width: 100%;
+        box-sizing: border-box;
     }
     
     /* Comparison boxes */
@@ -1884,16 +1925,18 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
         font-size: 1.3em;
     }
     
-    /* Toast */
+    /* Toast - fixed positioning and sizing */
     .motivational-toast {
-        width: 90%;
-        max-width: 90%;
-        padding: 20px 30px;
+        width: calc(100% - 20px);
+        max-width: calc(100% - 20px);
+        padding: 15px 20px;
+        left: 10px;
+        transform: none;
         bottom: -200px;
     }
     
     .motivational-toast.show {
-        bottom: 20px;
+        bottom: 10px;
     }
     
     .toast-emoji {
