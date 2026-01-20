@@ -1318,13 +1318,6 @@ footer {
     to { opacity: 1; }
 }
 
-@media (max-width: 768px) {
-    .compare-container,
-    .compare-results {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Typing Indicator Animation */
 .typing-indicator {
     display: none;
@@ -1890,6 +1883,11 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
     .comparison-container {
         flex-direction: column;
         gap: 15px;
+    }
+    
+    .compare-container,
+    .compare-results {
+        grid-template-columns: 1fr;
     }
     
     .text-box {
