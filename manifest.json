@@ -1,0 +1,24 @@
+{
+  "name": "Texting Style Analyzer",
+  "short_name": "TextAnalyzer",
+  "description": "Discover Your Unique Texting Personality - Are You Dry or Funny?",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e8d5f2",
+  "theme_color": "#9b7ecf",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%239b7ecf'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>💬</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%239b7ecf'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>💬</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

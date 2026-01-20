@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texting Style Analyzer - Are You Dry or Funny?</title>
+    <meta name="description" content="Discover Your Unique Texting Personality! Analyze if your texts are dry or funny with our fun interactive tool.">
+    <meta name="theme-color" content="#9b7ecf">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%239b7ecf'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>💬</text></svg>">
+</head>
+<body>
+    <!-- Floating emojis background -->
+    <div class="floating-emojis" id="floatingEmojis"></div>
+    
+    <div class="container">
+        <header>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <!-- Avatar Face -->
+            <div class="avatar-container">
+                <div class="avatar-face" id="avatarFace">
+                    <div class="avatar-head">
+                        <div class="avatar-eyes">
+                            <div class="eye left-eye">
+                                <div class="pupil"></div>
+                            </div>
+                            <div class="eye right-eye">
+                                <div class="pupil"></div>
+                            </div>
+                        </div>
+                        <div class="avatar-mouth" id="avatarMouth">
+                            <div class="mouth-smile"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>Texting Style Analyzer 💬</h1>
+            <p class="subtitle">Discover Your Unique Texting Personality!</p>
+        </header>
+
+        <div class="app-layout">
+            <nav class="side-menu" id="sideMenu">
+                <div class="menu-header">
+                    <h3>Modules</h3>
+                    <button class="close-menu" onclick="toggleMenu()">✕</button>
+                </div>
+                <ul class="menu-list">
+                    <li class="menu-item active" onclick="switchTab('analyze')">
+                        <span class="menu-icon">🔍</span>
+                        <span class="menu-text">Analyze</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('chat')">
+                        <span class="menu-icon">💬</span>
+                        <span class="menu-text">Chat Simulator</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('enhancer')">
+                        <span class="menu-icon">✨</span>
+                        <span class="menu-text">Text Enhancer</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('compare')">
+                        <span class="menu-icon">⚖️</span>
+                        <span class="menu-text">Compare</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('challenge')">
+                        <span class="menu-icon">🎮</span>
+                        <span class="menu-text">Challenge</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('examples')">
+                        <span class="menu-icon">📝</span>
+                        <span class="menu-text">Examples</span>
+                    </li>
+                    <li class="menu-item" onclick="switchTab('history')">
+                        <span class="menu-icon">📊</span>
+                        <span class="menu-text">History</span>
+                    </li>
+                </ul>
+            </nav>
+
+        <main>
+            <!-- ANALYZE MODULE -->
+            <div id="analyze-module" class="module active">
+            <div class="input-section">
+                <label for="textInput">Paste your conversation or text messages below:</label>
+                <textarea 
+                    id="textInput" 
+                    placeholder="Example: hey! how's it going? 😂 i just saw the funniest thing omg you won't believe it..."
+                    rows="8"
+                ></textarea>
+                <div class="button-container">
+                    <button id="analyzeBtn" class="analyze-btn" onclick="analyzeText()">Analyze My Style</button>
+                    <button id="clearAnalyzeBtn" class="clear-btn" onclick="clearAnalyzeText()">Clear</button>
+                </div>
+            </div>
+
+            <div id="results" class="results hidden">
+                <div class="result-header">
+                    <h2 id="resultTitle"></h2>
+                    <div id="scoreBar" class="score-bar">
+                        <div id="scoreIndicator" class="score-indicator"></div>
+                    </div>
+                    <p id="scoreText" class="score-text"></p>
+                </div>
+
+                <div class="result-details">
+                    <h3>Analysis Breakdown</h3>
+                    <div id="breakdown" class="breakdown"></div>
+                </div>
+
+                <div class="characteristics">
+                    <h3>Your Texting Characteristics</h3>
+                    <ul id="characteristicsList"></ul>
+                </div>
+
+                <div class="tips">
+                    <h3>Tips</h3>
+                    <p id="tipsText"></p>
+                </div>
+
+                <div id="achievements" class="achievements">
+                    <h3>🏆 Achievements Unlocked</h3>
+                    <div id="badgesList" class="badges-list"></div>
+                </div>
+
+                <div class="celebrity-match">
+                    <h3>🌟 You Text Like...</h3>
+                    <div id="celebrityMatch" class="celebrity-card"></div>
+                </div>
+
+                <div class="share-section">
+                    <button onclick="shareResults()" class="share-btn">📤 Share Results</button>
+                    <button onclick="copyResults()" class="copy-btn">📋 Copy to Clipboard</button>
+                </div>
+            </div>
+            </div>
+
+            <!-- CHAT SIMULATOR MODULE -->
+            <div id="chat-module" class="module">
+                <div class="module-header">
+                    <h2>💬 Chat Simulator</h2>
+                    <p>Practice your texting style with FunBot!</p>
+                </div>
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages">
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type your message... ✍️" onkeypress="if(event.key === 'Enter') sendMessage()" />
+                        <button class="send-btn" onclick="sendMessage()">Send</button>
+                    </div>
+                    <div class="live-score" id="liveScoreContainer" style="display: none;">
+                        <span id="liveScore">Funny Score: 0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEXT ENHANCER MODULE -->
+            <div id="enhancer-module" class="module">
+                <div class="module-header">
+                    <h2>✨ Text Enhancer</h2>
+                    <p>Make your dry texts more fun and engaging!</p>
+                </div>
+                <div class="enhancer-container">
+                    <div class="enhancer-input">
+                        <label>Your Original Text:</label>
+                        <textarea id="enhancerInput" rows="5" placeholder="ok. yeah that's cool. see you later."></textarea>
+                        <button class="enhance-btn" onclick="enhanceText()">✨ Enhance It!</button>
+                    </div>
+                    <div id="enhancerResults" class="enhancer-results hidden">
+                        <h3>Enhanced Versions:</h3>
+                        <div id="enhancedTexts" class="enhanced-texts"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPARE MODULE -->
+            <div id="compare-module" class="module">
+                <div class="module-header">
+                    <h2>⚖️ Compare Texting Styles</h2>
+                    <p>Compare two different texting styles side by side</p>
+                </div>
+                <div class="compare-container">
+                    <div class="compare-side">
+                        <label>Person A's Text:</label>
+                        <textarea id="compareA" rows="6" placeholder="Enter first person's texts..."></textarea>
+                    </div>
+                    <div class="compare-side">
+                        <label>Person B's Text:</label>
+                        <textarea id="compareB" rows="6" placeholder="Enter second person's texts..."></textarea>
+                    </div>
+                </div>
+                <button onclick="compareTexts()" class="compare-btn">Compare Styles</button>
+                <div id="compareResults" class="compare-results hidden"></div>
+            </div>
+
+            <!-- CHALLENGE MODULE -->
+            <div id="challenge-module" class="module">
+                <div class="module-header">
+                    <h2>🎮 Daily Challenge</h2>
+                    <p>Test your texting skills with fun challenges!</p>
+                </div>
+                <div id="challengeContent" class="challenge-content">
+                    <div class="challenge-card">
+                        <h3 id="challengeTitle"></h3>
+                        <p id="challengeDescription"></p>
+                        <div class="challenge-scenario">
+                            <p id="challengeScenario"></p>
+                        </div>
+                        <textarea id="challengeResponse" rows="4" placeholder="Type your response here..."></textarea>
+                        <button class="submit-btn" onclick="submitChallenge()">Submit Response</button>
+                        <div id="challengeResult" class="challenge-result hidden"></div>
+                    </div>
+                    <button onclick="newChallenge()" class="new-challenge-btn">🎲 New Challenge</button>
+                </div>
+            </div>
+
+            <!-- EXAMPLES MODULE -->
+            <div id="examples-module" class="module">
+                <div class="module-header">
+                    <h2>📝 Texting Examples Library</h2>
+                    <p>Learn from different texting styles</p>
+                </div>
+                <div class="examples-library">
+                    <div class="example-category">
+                        <h3>😂 Very Funny Examples</h3>
+                        <div class="example-item">
+                            <p>"OMG you won't BELIEVE what just happened!! 😂😂 I was walking to the store and literally saw a dog riding a skateboard lmao!!"</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                        <div class="example-item">
+                            <p>"HAHAHA NO WAY 💀 that's literally the funniest thing I've heard all week!! Tell me EVERYTHING omg I'm dying 😭😂"</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                    </div>
+                    <div class="example-category">
+                        <h3>😊 Balanced Examples</h3>
+                        <div class="example-item">
+                            <p>"Hey! How are you? 😊 I'm doing alright, just got back from work. Want to grab dinner later?"</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                        <div class="example-item">
+                            <p>"That sounds great! I'd love to. What time works for you? Maybe around 7pm? 🍕"</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                    </div>
+                    <div class="example-category">
+                        <h3>😐 Dry Examples</h3>
+                        <div class="example-item">
+                            <p>"ok yeah sounds good see you then"</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                        <div class="example-item">
+                            <p>"Received. I will be there. Thanks."</p>
+                            <button onclick="analyzeExample(this)">Analyze This</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HISTORY MODULE -->
+            <div id="history-module" class="module">
+                <div class="module-header">
+                    <h2>📊 Analysis History</h2>
+                    <p>View your past analyses and track your progress</p>
+                </div>
+                <div class="history-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalAnalyses">0</div>
+                        <div class="stat-label">Total Analyses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="avgScore">0%</div>
+                        <div class="stat-label">Avg Funny Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="highestScore">0%</div>
+                        <div class="stat-label">Highest Score</div>
+                    </div>
+                </div>
+                <div id="historyList" class="history-list"></div>
+                <button onclick="clearHistory()" class="clear-history-btn">Clear History</button>
+            </div>
+        </main>
+        </div>
+
+        <!-- Clear History Popup -->
+        <div id="clearHistoryModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Clear History?</h3>
+                <p>Are you sure you want to delete all your analysis history?</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn yes-btn" onclick="confirmClearHistory()">Yes</button>
+                    <button class="modal-btn no-btn" onclick="closeClearHistoryModal()">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copy Success Popup -->
+        <div id="copyModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>✅ Copied!</h3>
+                <p>Text has been copied to your clipboard</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn yes-btn" onclick="closeCopyModal()">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmModal" class="confirm-modal">
+            <div class="confirm-modal-content">
+                <h3 id="confirmTitle">Confirm Action</h3>
+                <p id="confirmMessage">Are you sure?</p>
+                <div class="confirm-modal-buttons">
+                    <button class="confirm-yes-btn" id="confirmYesBtn">Yes</button>
+                    <button class="confirm-no-btn" onclick="closeConfirmModal()">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivational Toast -->
+        <div id="motivationalToast" class="motivational-toast">
+            <button class="toast-close" onclick="closeToast()">✕</button>
+            <div class="toast-emoji">🤨</div>
+            <div class="toast-message" id="toastMessage">You can do better! Add some spice! 🌶️</div>
+        </div>
+
+        <footer>
+            <p style="margin-top: 15px; font-size: 0.95em;">Made with ❤️ for better texting</p>
+        </footer>
+    </div>
+
+    <script src="analyzer.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed:', err));
+        }
+    </script>
+</body>
+</html>
