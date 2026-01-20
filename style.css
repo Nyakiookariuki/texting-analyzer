@@ -4,14 +4,21 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     font-family: 'Segoe UI', 'Noto Sans', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(135deg, #e8d5f2 0%, #f5e6ff 100%);
     min-height: 100vh;
-    padding: 20px;
+    padding: clamp(5px, 2vw, 20px);
     color: #333;
     overflow-x: hidden;
     position: relative;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Floating Emojis Background */
@@ -64,10 +71,11 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: min(900px, 100%);
+    width: 100%;
     margin: 0 auto;
     background: #f7f7f7;
-    border-radius: 20px;
+    border-radius: clamp(10px, 2vw, 20px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     position: relative;
@@ -77,10 +85,20 @@ body {
 header {
     background: linear-gradient(135deg, #9b7ecf 0%, #b39ddb 100%);
     color: white;
-    padding: 50px 30px;
+    padding: clamp(40px, 8vw, 50px) clamp(15px, 4vw, 30px) clamp(30px, 6vw, 50px);
     text-align: center;
     position: relative;
     box-shadow: 0 4px 15px rgba(155, 126, 207, 0.3);
+}
+
+header h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: 0;
+}
+
+.subtitle {
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    margin-top: 10px;
 }
 
 /* Avatar Face */
@@ -181,14 +199,14 @@ header {
     transform: translateY(10px);
 }
 
-.avatar-excited .eye {
-    animation: eyeBlink 0.5s infinite;
-}
-
-@keyframes eyeBlink {
-    0%, 100% { transform: scaleY(1); }
-    50% { transform: scaleY(0.1); }
-}
+.avatar-exclamp(5px, 2vw, 20px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
+    color: white;
+    font-size: clamp(1.2em, 3vw, 1.8em);
+    padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 18px)
 
 .menu-toggle {
     position: absolute;
@@ -1626,20 +1644,21 @@ button:not(.menu-toggle):not(.close-menu):not(.modal-btn):not(.confirm-yes-btn):
     gap: 10px;
     margin-top: 15px;
     flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Motivational Toast */
-.motivational-toast {
-    position: fixed;
-    bottom: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
-    color: white;
-    padding: 25px 40px;
+    justify-cclamp(15px, 3vw, 25px) clamp(20px, 4vw, 40px);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2vw, 20px);
+    transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-width: min(500px, 90vw);
+    width: auto;
+    border: 3px solid white;
+}
+
+.motivational-toast.show {
+    bottom: clamp(10px, 2vh, 30px)0 10px 30px rgba(255, 107, 157, 0.4);
     z-index: 10000;
     display: flex;
     align-items: center;
