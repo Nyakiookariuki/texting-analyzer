@@ -20,7 +20,9 @@ To clone and work with this project in VS Code:
 ```bash
 git clone https://github.com/Nyakiookariuki/texting-analyzer.git
 cd texting-analyzer
+code .
 ```
+Or open VS Code and use `File > Open Folder` to open the cloned directory.
 
 ### Use Online
 Visit the hosted link: [Coming Soon - Deploy to get your link]
