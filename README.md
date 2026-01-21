@@ -13,6 +13,15 @@ Discover Your Unique Texting Personality! Find out if your texts are dry or funn
 
 ## 📱 Installation
 
+### GitHub Repository
+🔗 **Repository Link**: https://github.com/Nyakiookariuki/texting-analyzer
+
+To clone and work with this project in VS Code:
+```bash
+git clone https://github.com/Nyakiookariuki/texting-analyzer.git
+cd texting-analyzer
+```
+
 ### Use Online
 Visit the hosted link: [Coming Soon - Deploy to get your link]
 
